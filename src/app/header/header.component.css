@@ -1,0 +1,52 @@
+header {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  margin-bottom: 100px;
+}
+h2 {
+  font-weight: 300;
+}
+* {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+ul,
+li {
+  list-style-type: none;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+input {
+  width: 350px;
+  height: 35px;
+  border-radius: 25px;
+  border: 1px solid #000000;
+  padding-left: 25px;
+}
+.container {
+  width: 100%;
+  padding: 25px 100px;
+}
+.container-lite {
+  display: flex;
+  justify-content: space-between;
+}
+.search {
+  position: relative;
+}
+.search ion-icon {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: 13px;
+  top: 5px;
+  cursor: pointer;
+}
+.cart {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}

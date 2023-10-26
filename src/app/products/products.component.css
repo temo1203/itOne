@@ -1,0 +1,87 @@
+.container {
+  padding: 0px 30px;
+}
+.product {
+  place-items: center;
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+.product img {
+  width: 400px;
+  height: 500px;
+  padding: 25px;
+  border: 2px solid #000;
+  border-radius: 10px;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 167px;
+}
+.product p {
+  color: #d2691e;
+  cursor: pointer;
+}
+.product ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.product ul > li:last-child {
+  display: flex;
+  gap: 20px;
+}
+.product ul button {
+  padding: 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #ffff;
+}
+.product ul li > button:first-child {
+  background-color: blueviolet;
+}
+.product ul li > button:last-child {
+  background-color: #d2691e;
+}
+.rating mat-icon {
+  color: #d2691e;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+.pop {
+  border-radius: 10px;
+  width: 500px;
+  padding: 20px;
+  background-color: aquamarine;
+  position: absolute;
+  top: 26%;
+  left: 35%;
+}
+.del {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.del ion-icon {
+  width: 30px;
+  height: 30px;
+  color: #808080;
+}
+mat-divider {
+  margin: 15px 0px;
+}
+.rating {
+  margin-bottom: 20px;
+}
+form button,
+.pop > button:last-child {
+  width: 150px;
+  padding: 10px;
+  height: 40px;
+}
+.display {
+  display: block;
+}

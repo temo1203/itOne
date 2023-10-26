@@ -1,0 +1,79 @@
+<div class="main-container">
+  <div class="main-container-lite">
+    <div class="slider">
+      <div class="slider-content">
+        <h1>
+          კომპიუტერები, <br />
+          ტანსაცმელები და სხვა
+        </h1>
+        <button>
+          სრულად ნახვა <ion-icon name="chevron-forward-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+    <div class="product-search">
+      <div class="products">
+        <div
+          class="product-card"
+          (click)="
+            productClick(value.id, value.image, value.title, value.price)
+          "
+          *ngFor="let value of productData"
+        >
+          <a class="product-image">
+            <img [src]="value.image" alt="product image" />
+          </a>
+          <div class="product-details">
+            <a>
+              <h5 class="product-title">{{ value.title }}</h5>
+            </a>
+            <div class="price-and-rating">
+              <p class="product-price">{{ value.price | currency : "USD" }}</p>
+              <div class="rating">
+                <div class="rate">
+                  <span
+                    class="fa fa-star"
+                    [class.checked]="value.rating.rate >= 1"
+                  ></span>
+                  <span
+                    class="fa fa-star"
+                    [class.checked]="value.rating.rate >= 2"
+                  ></span>
+                  <span
+                    class="fa fa-star"
+                    [class.checked]="value.rating.rate >= 3"
+                  ></span>
+                  <span
+                    class="fa fa-star"
+                    [class.checked]="value.rating.rate >= 4"
+                  ></span>
+                  <span
+                    class="fa fa-star"
+                    [class.checked]="value.rating.rate >= 5"
+                  ></span>
+                </div>
+                <span class="rating-value">{{ value.rating.rate }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="search-bar">
+        <ul>
+          <li
+            (click)="navigateToFilters(index)"
+            *ngFor="let value of searchBar; let index = index"
+          >
+            {{ value }} <ion-icon name="chevron-forward-outline"></ion-icon>
+          </li>
+        </ul>
+
+        <div class="aside-search">
+          <p *ngFor="let value of asideSearchBar">
+            {{ value }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
