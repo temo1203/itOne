@@ -1,18 +1,11 @@
 <div class="main-container">
   <div class="main-container-lite">
-    <div class="slider">
-      <div class="slider-content">
-        <h1>
-          კომპიუტერები, <br />
-          ტანსაცმელები და სხვა
-        </h1>
-        <button routerLink="/full">
-          სრულად ნახვა <ion-icon name="chevron-forward-outline"></ion-icon>
-        </button>
-      </div>
-    </div>
     <div class="product-search">
       <div class="products">
+        <p *ngIf="noMatchingProducts">
+          No products match the selected criteria.
+        </p>
+
         <div
           class="product-card"
           (click)="productClick(value.id)"
@@ -26,7 +19,7 @@
               <h5 class="product-title">{{ value.title | lineBreak }}</h5>
             </a>
             <div class="price-and-rating">
-              <p class="product-price">{{ value.price | currency : "₾" }}</p>
+              <p class="product-price">{{ value.price | currency : "USD" }}</p>
               <div class="rating">
                 <div class="rate">
                   <span
@@ -35,6 +28,7 @@
                     [class.checked]="value.rating.rate >= i + 1"
                   ></span>
                 </div>
+
                 <span class="rating-value">{{ value.rating.rate }}</span>
               </div>
             </div>
@@ -43,18 +37,29 @@
       </div>
       <div class="search-bar">
         <ul>
-          <li
-            (click)="navigateToFilters(index)"
-            *ngFor="let value of searchBar; let index = index"
+          <mat-checkbox
+            color="warn"
+            *ngFor="let value of searchBar; let i = index"
+            class="example-margin"
+            (change)="applyFilters(value)"
           >
-            {{ value }} <ion-icon name="chevron-forward-outline"></ion-icon>
-          </li>
+            {{ value }}
+          </mat-checkbox>
         </ul>
 
         <div class="aside-search">
           <p *ngFor="let value of asideSearchBar">
             {{ value }}
           </p>
+        </div>
+        <div class="filter">
+          <mat-slider class="mat-slider" discrete min="0" max="599">
+            <input [(ngModel)]="minPrice" value="0" matSliderStartThumb />
+            <input [(ngModel)]="maxPrice" value="500" matSliderEndThumb />
+          </mat-slider>
+          <button (click)="filterProducts()" mat-flat-button color="primary">
+            Filter
+          </button>
         </div>
       </div>
     </div>

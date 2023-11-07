@@ -10,6 +10,8 @@ import { IonicModule } from '@ionic/angular';
 import { ProductsComponent } from './products/products.component';
 import { PipesPipe } from './pipes.pipe';
 
+import { MatSliderModule } from '@angular/material/slider';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
@@ -21,6 +23,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FilterProductsComponent } from './filter-products/filter-products.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { FullProductsComponent } from './full-products/full-products.component';
+import { CartComponent } from './cart/cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,8 +35,13 @@ import { FilterProductsComponent } from './filter-products/filter-products.compo
     ProductsComponent,
     PipesPipe,
     FilterProductsComponent,
+    FullProductsComponent,
+    CartComponent,
   ],
   imports: [
+    MatSliderModule,
+    MatCheckboxModule,
+    MatTabsModule,
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,

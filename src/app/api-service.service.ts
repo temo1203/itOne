@@ -1,15 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 @Injectable({
   providedIn: 'root',
 })
 export class ApiServiceService {
-  api: string = 'https://fakestoreapi.com/products';
+  //> Define API endpoints
+  api: string = 'https://itstep-30100-default-rtdb.firebaseio.com/data.json';
+  cartApi: string =
+    'https://itstep-30100-default-rtdb.firebaseio.com/cart.json';
+
   constructor(private http: HttpClient) {}
+
+  //! Fetch product data
   GetProductApi() {
     return this.http.get(this.api);
   }
-  PostProduct(string: string) {
-    return this.http.post(this.api, string);
+
+  //! Fetch cart data
+  getCartApi() {
+    return this.http.get(this.cartApi);
   }
 }

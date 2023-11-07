@@ -1,14 +1,14 @@
 <div class="container">
   <div class="product">
-    <img [src]="img" alt="" />
+    <img [src]="productsData.image" alt="" />
     <div class="content">
-      <h1 [innerHTML]="name | lineBreak">{{ name }}</h1>
+      <h1>{{ productsData.title }}</h1>
       <p>Show more</p>
       <ul>
-        <li>{{ price | currency : "₾" }}</li>
+        <li>{{ productsData.price | currency : "₾" }}</li>
         <li>
           <button (click)="openPop()">შეფასება</button>
-          <button>კალათაში დამატება</button>
+          <button (click)="cartAdd()">{{ cartBoolean }}</button>
         </li>
       </ul>
     </div>
@@ -29,20 +29,27 @@
       <mat-form-field appearance="fill">
         <mat-label>Fill form field</mat-label>
         <input formControlName="name" matInput placeholder="name12345" />
-        <mat-error *ngIf="fc.name.invalid">{{ "error" }}</mat-error>
+        <mat-error *ngIf="fc.name.errors?.minlength"
+          >name must contain at least 4 letters</mat-error
+        >
+        <mat-error *ngIf="fc.name.errors?.noSpace"
+          >name must not contain spaces</mat-error
+        >
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field class="lite-form">
         <mat-label>Textarea</mat-label>
         <textarea
           formControlName="textarea"
           placeholder="Write description"
           matInput
         ></textarea>
-        <mat-error *ngIf="fc.textarea.invalid">{{ "error" }}</mat-error>
+        <mat-error *ngIf="fc.textarea.errors?.minlength"
+          >text area must contain at least 10 letters</mat-error
+        >
       </mat-form-field>
-
       <button
+        [disabled]="form.invalid"
         (click)="SubmitForm()"
         type="submit"
         mat-flat-button
@@ -54,4 +61,29 @@
     <mat-divider></mat-divider>
     <button (click)="closePop()" mat-flat-button color="warn">დახურვა</button>
   </div>
+  <mat-tab-group class="tab" dynamicHeight>
+    <mat-tab label="Details">
+      <div class="example-small-box width_lite">
+        {{ productsData.description }}
+      </div>
+    </mat-tab>
+    <mat-tab label="Review">
+      <div class="mat-class">
+        <div
+          *ngFor="let value of commentsData | keyvalue"
+          class="example-large-box mat-lite"
+        >
+          <h1>{{ value.value.name }}</h1>
+          <div class="rate">
+            <span
+              class="fa fa-star"
+              *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+              [class.checked]="value.value.rate >= i + 1"
+            ></span>
+          </div>
+          <p>{{ value.value.desc }}</p>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 </div>

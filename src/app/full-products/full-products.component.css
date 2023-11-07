@@ -21,32 +21,6 @@ html {
 h1 {
   margin: 0;
 }
-.slider {
-  background-position: center;
-  width: 100%;
-  height: 400px;
-  background-image: url(../../assets/computer-hardware-2625895-5d9007ac0d44404588321d255fc82049.jpg);
-  border: 1px solid #000;
-  border-radius: 9px;
-}
-.slider-content h1 {
-  color: #fff;
-  font-size: 40px;
-  line-height: 60px;
-}
-.slider-content button {
-  width: 190px;
-  color: #ffff;
-  height: 50px;
-  font-size: 17px;
-  background-color: #ff5733;
-  border-radius: 7px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 7px;
-  font-weight: 400;
-}
 .main-container {
   display: flex;
   justify-content: center;
@@ -181,6 +155,10 @@ h1 {
 .search-bar {
   position: relative;
 }
+.search-bar ul {
+  display: flex;
+  flex-direction: column;
+}
 .aside-search {
   margin-top: 50px;
   position: absolute;
@@ -194,6 +172,8 @@ h1 {
 .search-bar ul > li:first-child:hover + .aside-search {
   display: block;
 }
-.mat-slider {
-  display: block;
+.filter {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
 }
