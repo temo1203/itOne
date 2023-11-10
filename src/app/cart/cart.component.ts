@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from '../api-service.service';
 import { HttpClient } from '@angular/common/http';
-
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -9,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CartComponent implements OnInit {
   cartData: any[] = [];
-
+  cartNum: number = 0;
   constructor(private service: ApiServiceService, public http: HttpClient) {}
 
   ngOnInit(): void {
@@ -38,5 +37,11 @@ export class CartComponent implements OnInit {
         },
       });
     }
+  }
+  plus() {
+    this.cartNum += 1;
+  }
+  minuse() {
+    this.cartNum -= 1;
   }
 }

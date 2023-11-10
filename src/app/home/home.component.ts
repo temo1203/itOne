@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from '../api-service.service';
 import { Router } from '@angular/router';
@@ -11,7 +12,6 @@ export class HomeComponent implements OnInit {
   constructor(private service: ApiServiceService, private router: Router) {}
 
   //> Search bar items
-  searchBar = ["Men's clothing", 'Jewelry', 'Electronics', "Women's clothing"];
 
   //> Aside search bar items
   asideSearchBar = [
@@ -34,6 +34,8 @@ export class HomeComponent implements OnInit {
     this.service.GetProductApi().subscribe({
       next: (data) => {
         //? Convert data to an array
+        console.log(data);
+
         const productArray = Object.values(data);
 
         this.productData = [];
@@ -66,10 +68,4 @@ export class HomeComponent implements OnInit {
   }
 
   //! Navigate to filters page with selected value
-  navigateToFilters(index: number) {
-    const selectedValue = this.searchBar[index];
-    this.router.navigate(['/filters'], {
-      queryParams: { value: selectedValue },
-    });
-  }
 }

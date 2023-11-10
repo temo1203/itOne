@@ -14,47 +14,40 @@
     <div class="product-search">
       <div class="products">
         <div
-          class="product-card"
           (click)="productClick(value.id)"
           *ngFor="let value of productData"
+          class="product-card"
         >
-          <a class="product-image">
-            <img [src]="value.image" alt="product image" />
-          </a>
+          <div class="product-tumb">
+            <img [src]="value.image" alt="" />
+          </div>
           <div class="product-details">
-            <a>
-              <h5 class="product-title">{{ value.title | lineBreak }}</h5>
-            </a>
-            <div class="price-and-rating">
-              <p class="product-price">{{ value.price | currency : "₾" }}</p>
-              <div class="rating">
-                <div class="rate">
-                  <span
-                    class="fa fa-star"
-                    *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
-                    [class.checked]="value.rating.rate >= i + 1"
-                  ></span>
-                </div>
-                <span class="rating-value">{{ value.rating.rate }}</span>
+            <div class="lite">
+              <span class="product-catagory">{{ value.category }}</span>
+              <div class="rate">
+                <span
+                  class="fa fa-star"
+                  *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+                  [class.checked]="value.rating.rate >= i + 1"
+                ></span>
+              </div>
+            </div>
+            <h4>
+              <a>{{ value.title | lineBreak }}</a>
+            </h4>
+            <p>
+              {{ value.description | lineBreak }}
+            </p>
+            <div class="product-bottom-details">
+              <div class="product-price">
+                {{ value.price | currency : "₾" }}
+              </div>
+              <div class="product-links">
+                <a><i class="fa fa-heart"></i></a>
+                <a><i class="fa fa-shopping-cart"></i></a>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="search-bar">
-        <ul>
-          <li
-            (click)="navigateToFilters(index)"
-            *ngFor="let value of searchBar; let index = index"
-          >
-            {{ value }} <ion-icon name="chevron-forward-outline"></ion-icon>
-          </li>
-        </ul>
-
-        <div class="aside-search">
-          <p *ngFor="let value of asideSearchBar">
-            {{ value }}
-          </p>
         </div>
       </div>
     </div>

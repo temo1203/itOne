@@ -6,6 +6,7 @@
       <p>Show more</p>
       <ul>
         <li>{{ productsData.price | currency : "₾" }}</li>
+
         <li>
           <button (click)="openPop()">შეფასება</button>
           <button (click)="cartAdd()">{{ cartBoolean }}</button>
@@ -13,7 +14,7 @@
       </ul>
     </div>
   </div>
-  <div *ngIf="popBool" id="custom-dialog" class="pop">
+  <div *ngIf="popBool" class="pop">
     <div class="del">
       <h1>შეფასება</h1>
       <ion-icon (click)="closePop()" name="close-outline"></ion-icon>
@@ -21,10 +22,53 @@
     <mat-divider></mat-divider>
     <h1>Rating</h1>
     <div class="rating">
-      <mat-icon *ngFor="let star of stars" (click)="setRating(star)">{{
-        star
-      }}</mat-icon>
+      <input
+        [(ngModel)]="selectedRating"
+        name="rate"
+        id="star5"
+        type="radio"
+        value="5"
+        (change)="onRatingChange(5)"
+      />
+      <label title="text" for="star5"></label>
+      <input
+        [(ngModel)]="selectedRating"
+        name="rate"
+        id="star4"
+        type="radio"
+        value="4"
+        (change)="onRatingChange(4)"
+      />
+      <label title="text" for="star4"></label>
+      <input
+        [(ngModel)]="selectedRating"
+        name="rate"
+        id="star3"
+        type="radio"
+        value="3"
+        (change)="onRatingChange(3)"
+      />
+      <label title="text" for="star3"></label>
+      <input
+        [(ngModel)]="selectedRating"
+        name="rate"
+        id="star2"
+        type="radio"
+        value="2"
+        (change)="onRatingChange(2)"
+      />
+      <label title="text" for="star2"></label>
+      <input
+        [(ngModel)]="selectedRating"
+        name="rate"
+        id="star1"
+        type="radio"
+        value="1"
+        (change)="onRatingChange(1)"
+      />
+      <label title="text" for="star1"></label>
     </div>
+
     <form [formGroup]="form">
       <mat-form-field appearance="fill">
         <mat-label>Fill form field</mat-label>

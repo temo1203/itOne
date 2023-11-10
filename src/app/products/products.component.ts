@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiServiceService } from '../api-service.service';
 import { HttpClient } from '@angular/common/http';
 import { noSpace } from '../nospace.validators';
-
+import swal from 'sweetalert2';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -12,8 +12,12 @@ import { noSpace } from '../nospace.validators';
 })
 export class ProductsComponent implements OnInit {
   //> Rating stars
-  stars: string[] = ['star', 'star', 'star', 'star', 'star'];
   selectedRating: number = 0;
+
+  onRatingChange(rating: number) {
+    this.selectedRating = rating;
+    console.log(rating);
+  }
 
   //> Product details
   commentsData: any[] = [];
@@ -82,23 +86,20 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  //! Set the selected rating
-  setRating(rating: any) {
-    this.selectedRating = rating;
-  }
-
   //! Submit review form
   SubmitForm() {
     const newComment = {
       desc: this.fc.textarea.value,
       name: this.fc.name.value,
-      rate: 3.5,
+      rate: this.selectedRating,
     };
 
     //! Post the new comment
     this.http
       .post(
-        `https://itstep-30100-default-rtdb.firebaseio.com/data/${this.productsData}/comments.json`,
+        `https://itstep-30100-default-rtdb.firebaseio.com/data/${
+          this.id - 1
+        }/comments.json`,
         newComment
       )
       .subscribe({
@@ -123,7 +124,9 @@ export class ProductsComponent implements OnInit {
       //! Update cartBool in Firebase
       this.http
         .put(
-          `https://itstep-30100-default-rtdb.firebaseio.com/data/${this.productsData}/cartBool.json`,
+          `https://itstep-30100-default-rtdb.firebaseio.com/data/${
+            this.id - 1
+          }/cartBool.json`,
           true
         )
         .subscribe({
@@ -146,7 +149,7 @@ export class ProductsComponent implements OnInit {
         },
       });
     } else {
-      alert('პროდუქტი უკვე დამატებულია');
+      swal.fire('შეცდომა', 'პროდუქტი უკვე არის დამატებული!', 'error');
     }
   }
 

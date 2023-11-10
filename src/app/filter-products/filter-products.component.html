@@ -18,7 +18,9 @@
               <h5 class="product-title">{{ value.title }}</h5>
             </a>
             <div class="price-and-rating">
-              <p class="product-price">{{ value.price | currency : "USD" }}</p>
+              <p class="product-price">
+                {{ value.price | currency : "₾" }}
+              </p>
               <div class="rating">
                 <div class="rate">
                   <span

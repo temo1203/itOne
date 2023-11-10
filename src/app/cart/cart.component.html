@@ -1,24 +1,146 @@
 <div class="container">
+  <h1 class="lite_h1">Your Cart</h1>
   <div class="products">
     <div *ngFor="let value of cartData | keyvalue">
-      <img [src]="value.value.image" alt="" />
-      <div class="product_content">
-        <h1>{{ value.value.title | lineBreak }}</h1>
-        <div class="rate">
-          <span
-            class="fa fa-star"
-            *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
-            [class.checked]="value.value.rating.rate >= i + 1"
-          ></span>
+      <div class="product-card">
+        <img
+          class="product-image"
+          [src]="value.value.image"
+          alt="{{ value.value.title }}"
+        />
+        <div class="product-details">
+          <h2 class="product-title">{{ value.value.title | lineBreak }}</h2>
+          <div class="product-rating">
+            <span
+              class="fa fa-star"
+              *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+              [class.checked]="value.value.rating.rate >= i + 1"
+            ></span>
+          </div>
+          <div class="product-options">
+            <div class="number">
+              <button (click)="plus()" class="plus-button">+</button>
+
+              <input [value]="cartNum" type="text" class="number-input" />
+
+              <button (click)="minuse()" class="minus-button">-</button>
+            </div>
+            <p class="product-price">
+              {{ value.value.price | currency : "₾" }}
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="number_type">
-        <input type="number" />
-      </div>
-      <div class="product_result">
-        <p>{{ value.value.price | currency : "₾" }}</p>
-        <mat-icon (click)="deleteProduct(value.key)">delete</mat-icon>
+        <button (click)="deleteProduct(value.key)" class="button" type="button">
+          <span class="button__text">Delete</span>
+          <span class="button__icon"
+            ><svg
+              class="svg"
+              height="512"
+              viewBox="0 0 512 512"
+              width="512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title></title>
+              <path
+                d="M112,112l20,320c.95,18.49,14.4,32,32,32H348c17.67,0,30.87-13.51,32-32l20-320"
+                style="
+                  fill: none;
+                  stroke: #fff;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  stroke-width: 32px;
+                "
+              ></path>
+              <line
+                style="
+                  stroke: #fff;
+                  stroke-linecap: round;
+                  stroke-miterlimit: 10;
+                  stroke-width: 32px;
+                "
+                x1="80"
+                x2="432"
+                y1="112"
+                y2="112"
+              ></line>
+              <path
+                d="M192,112V72h0a23.93,23.93,0,0,1,24-24h80a23.93,23.93,0,0,1,24,24h0v40"
+                style="
+                  fill: none;
+                  stroke: #fff;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  stroke-width: 32px;
+                "
+              ></path>
+              <line
+                style="
+                  fill: none;
+                  stroke: #fff;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  stroke-width: 32px;
+                "
+                x1="256"
+                x2="256"
+                y1="176"
+                y2="400"
+              ></line>
+              <line
+                style="
+                  fill: none;
+                  stroke: #fff;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  stroke-width: 32px;
+                "
+                x1="184"
+                x2="192"
+                y1="176"
+                y2="400"
+              ></line>
+              <line
+                style="
+                  fill: none;
+                  stroke: #fff;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  stroke-width: 32px;
+                "
+                x1="328"
+                x2="320"
+                y1="176"
+                y2="400"
+              ></line>
+            </svg>
+          </span>
+        </button>
       </div>
     </div>
+  </div>
+
+  <div class="contact">
+    <h1 class="cont">Contact</h1>
+    <form>
+      <div>
+        <mat-form-field class="form_width">
+          <mat-label>Name</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field class="form_width">
+          <mat-label>Email</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </div>
+      <mat-form-field class="Message">
+        <mat-label>Message</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+      <div class="form_div">
+        <button class="form_button">
+          <span>BUTTON</span>
+        </button>
+      </div>
+    </form>
   </div>
 </div>

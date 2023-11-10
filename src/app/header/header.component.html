@@ -1,4 +1,4 @@
-<header>
+<!-- <header>
   <div class="container">
     <div class="container-lite">
       <h2 routerLink="/">Shop</h2>
@@ -7,6 +7,27 @@
         <ion-icon name="search-outline"></ion-icon>
       </div>
       <ion-icon routerLink="/cart" class="cart" name="cart-outline"></ion-icon>
+    </div>
+  </div>
+</header> -->
+<header class="main-header">
+  <div class="container">
+    <div class="header-content">
+      <h1 class="logo">
+        <a routerLink="/">Shop</a>
+      </h1>
+      <div class="menu">
+        <a routerLink="/">Home</a>
+        <a routerLink="/full">Products</a>
+        <a routerLink="/">Contact</a>
+      </div>
+      <div class="search">
+        <input type="search" placeholder="Search..." />
+        <ion-icon name="search-outline"></ion-icon>
+      </div>
+      <a routerLink="/cart" class="cart">
+        <ion-icon name="cart-outline"></ion-icon>
+      </a>
     </div>
   </div>
 </header>
