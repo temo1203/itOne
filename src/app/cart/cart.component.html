@@ -1,6 +1,7 @@
 <div class="container">
   <h1 class="lite_h1">Your Cart</h1>
   <div class="products">
+    <div *ngIf="cartData.length === 0">there is no product added</div>
     <div *ngFor="let value of cartData | keyvalue">
       <div class="product-card">
         <img
@@ -19,18 +20,28 @@
           </div>
           <div class="product-options">
             <div class="number">
-              <button (click)="plus()" class="plus-button">+</button>
+              <button (click)="plus(value.key)" class="plus-button">+</button>
 
-              <input [value]="cartNum" type="text" class="number-input" />
+              <input
+                [value]="value.value.cartNum"
+                type="text"
+                class="number-input"
+              />
 
-              <button (click)="minuse()" class="minus-button">-</button>
+              <button (click)="minuse(value.key)" class="minus-button">
+                -
+              </button>
             </div>
             <p class="product-price">
               {{ value.value.price | currency : "₾" }}
             </p>
           </div>
         </div>
-        <button (click)="deleteProduct(value.key)" class="button" type="button">
+        <button
+          (click)="deleteProduct(value.key, value.value.id)"
+          class="button"
+          type="button"
+        >
           <span class="button__text">Delete</span>
           <span class="button__icon"
             ><svg

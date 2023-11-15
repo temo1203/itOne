@@ -14,7 +14,7 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.service.getCartApi().subscribe({
       next: (data: any) => {
-        this.cartData = data;
+        this.cartData = data || [];
       },
       error: (error) => {
         console.log(error);
@@ -23,25 +23,85 @@ export class CartComponent implements OnInit {
   }
 
   //! delete product
-  deleteProduct(key: any) {
+  deleteProduct(key: any, id: any) {
     const deleteUrl = `https://itstep-30100-default-rtdb.firebaseio.com/cart/${key}.json`;
+
     const confirmation = confirm('Are you sure you want to delete this item?');
-    //? checks if prompt is clicked
+
     if (confirmation) {
       this.http.delete(deleteUrl).subscribe({
-        next: (data) => {
-          console.log(data);
+        next: () => {
+          console.log('Item deleted successfully');
+
+          const updatedIndex = id - 1;
+
+          this.http
+            .put(
+              `https://itstep-30100-default-rtdb.firebaseio.com/data/${updatedIndex}/cartBool.json`,
+              false
+            )
+            .subscribe({
+              next: (data) => {
+                console.log('cartBool updated successfully', data);
+              },
+              error: (error) => {
+                console.log('Error updating cartBool:', error);
+              },
+            });
         },
         error: (error) => {
-          console.log(error);
+          console.log('Error deleting item:', error);
         },
       });
     }
   }
-  plus() {
-    this.cartNum += 1;
+
+  plus(id: any) {
+    // Retrieve the current value
+    this.http
+      .get(
+        `https://itstep-30100-default-rtdb.firebaseio.com/cart/${id}/cartNum.json`
+      )
+      .subscribe((currentValue: any) => {
+        const newValue = currentValue + 1;
+
+        this.http
+          .put(
+            `https://itstep-30100-default-rtdb.firebaseio.com/cart/${id}/cartNum.json`,
+            newValue
+          )
+          .subscribe({
+            next: (data) => {
+              console.log('number:', data, 'was added');
+            },
+            error: (error) => {
+              console.log(error);
+            },
+          });
+      });
   }
-  minuse() {
-    this.cartNum -= 1;
+
+  minuse(id: any) {
+    this.http
+      .get(
+        `https://itstep-30100-default-rtdb.firebaseio.com/cart/${id}/cartNum.json`
+      )
+      .subscribe((currentValue: any) => {
+        const newValue = currentValue - 1;
+
+        this.http
+          .put(
+            `https://itstep-30100-default-rtdb.firebaseio.com/cart/${id}/cartNum.json`,
+            newValue
+          )
+          .subscribe({
+            next: (data) => {
+              console.log('number:', data, 'was minused');
+            },
+            error: (error) => {
+              console.log(error);
+            },
+          });
+      });
   }
 }

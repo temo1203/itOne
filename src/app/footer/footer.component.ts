@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class FooterComponent {
   constructor(private router: Router) {}
-  searchBar = ["Men's clothing", 'Jewelry', 'Electronics', "Women's clothing"];
+  searchBar = ["Men's clothing", 'Jewelery', 'Electronics', "Women's clothing"];
   navigateToFilters(index: number) {
     const selectedValue = this.searchBar[index];
     this.router.navigate(['/filters'], {

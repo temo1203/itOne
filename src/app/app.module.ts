@@ -10,6 +10,7 @@ import { IonicModule } from '@ionic/angular';
 import { ProductsComponent } from './products/products.component';
 import { PipesPipe } from './pipes.pipe';
 
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -56,6 +57,7 @@ import { CartComponent } from './cart/cart.component';
     MatButtonModule,
     MatDialogModule,
     FormsModule,
+    MatSidenavModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

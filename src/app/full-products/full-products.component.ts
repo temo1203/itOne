@@ -11,7 +11,7 @@ export class FullProductsComponent {
   constructor(private service: ApiServiceService, private router: Router) {}
 
   //> Search bar items
-  searchBar = ["men's clothing", 'jewelry', 'electronics', "women's clothing"];
+  searchBar = ["men's clothing", 'jewelery', 'electronics', "women's clothing"];
 
   //> Flag to indicate if there are no matching products
   noMatchingProducts: boolean = false;

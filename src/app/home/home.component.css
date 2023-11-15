@@ -263,3 +263,9 @@ a {
 .product-links a:hover {
   color: #fbb72c;
 }
+/*> media */
+@media screen and (max-width: 1260px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
