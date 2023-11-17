@@ -257,7 +257,7 @@ a {
   margin-left: 5px;
   color: #e1e1e1;
   transition: 0.3s;
-  font-size: 17px;
+  font-size: 23px;
 }
 
 .product-links a:hover {
@@ -267,5 +267,46 @@ a {
 @media screen and (max-width: 1260px) {
   .products {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 850px) {
+  .product-card {
+    width: 320px;
+  }
+}
+@media screen and (max-width: 730px) {
+  .products {
+    grid-template-columns: 1fr;
+  }
+  .slider-content {
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  .slider-content h1 {
+    font-size: 30px;
+    line-height: 40px;
+    text-align: center;
+  }
+  .product-card {
+    width: 380px;
+  }
+}
+@media screen and (max-width: 385px) {
+  .main-container-lite {
+    padding: 0;
+  }
+  .product-card {
+    width: 100%;
+  }
+  .toggleDiv {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 320px) {
+  .lite {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
   }
 }

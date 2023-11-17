@@ -27,9 +27,11 @@ h1 {
   color: #fff;
   font-size: 32px;
   font-weight: bold;
+  cursor: pointer;
 }
 
-.menu a {
+.menu a,
+.toggle_menu a {
   text-decoration: none;
   color: #fff;
   margin: 0 15px;
@@ -51,10 +53,13 @@ h1 {
   transition: transform 0.3s ease-in-out;
 }
 
-.menu a:hover {
+.menu a:hover,
+.toggle_menu a:hover {
   color: #fbb72c;
 }
-
+.toggle_menu a {
+  margin: 0;
+}
 .menu a:hover::before {
   transform: scaleX(1);
   transform-origin: left;
@@ -82,13 +87,70 @@ input[type="search"]:focus {
   border-color: #fbb72c;
 }
 
-ion-icon {
+ion-icon,
+mat-icon {
   font-size: 24px;
   color: #fff;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
 }
 
-ion-icon:hover {
+ion-icon:hover,
+mat-icon:hover {
   color: #fbb72c;
+}
+mat-icon {
+  font-size: 35px;
+  height: 35px;
+  width: 35px;
+}
+.toggleIcon,
+.toggleDiv {
+  display: none;
+}
+.toggle_menu {
+  font-size: 20px;
+  display: flex;
+  gap: 25px;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+.toggle_menu a {
+  cursor: pointer;
+}
+.toggleIcon ion-icon {
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
+}
+.scale {
+  scale: 0;
+}
+@media screen and (max-width: 850px) {
+  .toggleIcon {
+    display: inline;
+  }
+  .toggleDiv {
+    display: block;
+    position: absolute;
+    background: red;
+    padding: 30px;
+    top: 91px;
+    background: linear-gradient(135deg, #fbb72c, #ff9a00);
+    scale: 1;
+    border-top: 1px solid black;
+  }
+  .menu,
+  .search,
+  .cart {
+    display: none;
+  }
+  .header-content {
+    justify-content: space-between;
+    padding: 0px 40px;
+  }
+  .toggle_cart ion-icon {
+    margin-top: 15px;
+    font-size: 28px;
+  }
 }
