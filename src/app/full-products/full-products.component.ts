@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiServiceService } from '../api-service.service';
 import { Router } from '@angular/router';
-
+import swal from 'sweetalert2';
 @Component({
   selector: 'app-full-products',
   templateUrl: './full-products.component.html',
@@ -43,6 +43,7 @@ export class FullProductsComponent {
   ];
 
   ngOnInit(): void {
+    swal.fire('გილოცავთ', 'პროდუქტი წარმატებით დაემატა cart-ში!', 'success');
     //! Fetch product data
     this.service.GetProductApi().subscribe({
       next: (data) => {

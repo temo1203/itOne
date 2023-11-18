@@ -27,8 +27,12 @@ import { FilterProductsComponent } from './filter-products/filter-products.compo
 import { MatTabsModule } from '@angular/material/tabs';
 import { FullProductsComponent } from './full-products/full-products.component';
 import { CartComponent } from './cart/cart.component';
+import { ChunkPipe } from './chunk.pipe';
+import { SearchComponent } from './search/search.component';
+
 @NgModule({
   declarations: [
+    ChunkPipe,
     AppComponent,
     HeaderComponent,
     FooterComponent,
@@ -38,6 +42,7 @@ import { CartComponent } from './cart/cart.component';
     FilterProductsComponent,
     FullProductsComponent,
     CartComponent,
+    SearchComponent,
   ],
   imports: [
     MatSliderModule,

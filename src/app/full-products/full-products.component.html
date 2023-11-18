@@ -5,8 +5,46 @@
         <p *ngIf="noMatchingProducts">
           No products match the selected criteria.
         </p>
+        <div class="products_card">
+          <div
+            (click)="productClick(value.id)"
+            *ngFor="let value of productData"
+            class="product-card"
+          >
+            <div class="product-tumb">
+              <img [src]="value.image" alt="" />
+            </div>
+            <div class="product-details">
+              <div class="lite">
+                <span class="product-catagory">{{ value.category }}</span>
+                <div class="rate">
+                  <span
+                    class="fa fa-star"
+                    *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+                    [class.checked]="value.rating.rate >= i + 1"
+                  ></span>
+                </div>
+              </div>
+              <h4>
+                <a>{{ value.title | lineBreak }}</a>
+              </h4>
+              <p>
+                {{ value.description | lineBreak }}
+              </p>
+              <div class="product-bottom-details">
+                <div class="product-price">
+                  {{ value.price | currency : "₾" }}
+                </div>
+                <div class="product-links">
+                  <a><i class="fa fa-shopping-cart"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--!  -->
 
-        <div
+        <!-- <div
           class="product-card"
           (click)="productClick(value.id)"
           *ngFor="let value of productData"
@@ -35,7 +73,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="search-bar">
         <ul>

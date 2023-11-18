@@ -10,7 +10,12 @@
         <a routerLink="/cart">Contact</a>
       </div>
       <div class="search">
-        <input type="search" placeholder="Search..." />
+        <input
+          #value
+          (keyup.enter)="searchBar(value.value)"
+          type="search"
+          placeholder="Search..."
+        />
         <ion-icon name="search-outline"></ion-icon>
       </div>
       <a routerLink="/cart" class="cart"

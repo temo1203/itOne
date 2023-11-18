@@ -18,7 +18,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: 167px;
+  gap: 130px;
 }
 .product p {
   color: #d2691e;
@@ -159,3 +159,11 @@ form button,
   color: #ffa723;
 }
 /* ! */
+@media screen and (max-width: 850px) {
+  .product {
+    flex-direction: column;
+  }
+  .product ul {
+    justify-content: center;
+  }
+}

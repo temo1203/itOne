@@ -2,11 +2,12 @@
   <div class="product">
     <img [src]="productsData.image" alt="" />
     <div class="content">
-      <h1>{{ productsData.title }}</h1>
-      <p>Show more</p>
+      <div>
+        <h1 [innerHTML]="productsData.title | chunk"></h1>
+        <p>{{ productsData.price | currency : "₾" }}</p>
+      </div>
+      <!-- <p>Show more</p> -->
       <ul>
-        <li>{{ productsData.price | currency : "₾" }}</li>
-
         <li>
           <button (click)="openPop()">შეფასება</button>
           <button (click)="cartAdd()">{{ cartBoolean }}</button>
@@ -105,6 +106,7 @@
     <mat-divider></mat-divider>
     <button (click)="closePop()" mat-flat-button color="warn">დახურვა</button>
   </div>
+
   <mat-tab-group class="tab" dynamicHeight>
     <mat-tab label="Details">
       <div class="example-small-box width_lite">

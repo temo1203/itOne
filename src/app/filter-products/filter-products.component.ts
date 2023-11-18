@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from '../api-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -49,13 +49,10 @@ export class FilterProductsComponent implements OnInit {
     private router: Router
   ) {}
   productData: any;
-  productClick(id: any, image: string, name: string, price: number) {
+  productClick(id: any) {
     this.router.navigate(['/products'], {
       queryParams: {
         productId: id,
-        productImage: image,
-        productName: name,
-        productPrice: price,
       },
     });
   }
