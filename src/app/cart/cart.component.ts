@@ -9,6 +9,8 @@ import { HttpClient } from '@angular/common/http';
 export class CartComponent implements OnInit {
   cartData: any[] = [];
   cartNum: number = 0;
+  name: any;
+  message: any;
   constructor(private service: ApiServiceService, public http: HttpClient) {}
 
   ngOnInit(): void {
@@ -32,7 +34,14 @@ export class CartComponent implements OnInit {
       this.http.delete(deleteUrl).subscribe({
         next: () => {
           console.log('Item deleted successfully');
-
+          this.service.getCartApi().subscribe({
+            next: (data: any) => {
+              this.cartData = data || [];
+            },
+            error: (error) => {
+              console.log(error);
+            },
+          });
           const updatedIndex = id - 1;
 
           this.http

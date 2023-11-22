@@ -323,3 +323,11 @@ h1 {
     grid-template-columns: 1fr;
   }
 }
+@media screen and (max-width: 400px) {
+  .main-container-lite {
+    padding: 0;
+  }
+  .product-card {
+    width: 100%;
+  }
+}

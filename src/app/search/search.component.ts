@@ -15,14 +15,22 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.searchTag = params['searchValue'];
-      this.service.GetProductApi().subscribe({
-        next: (data: any) => {
-          console.log(data);
-        },
-        error: (error) => {
-          console.log(error);
-        },
-      });
+      if (this.searchTag === '') {
+        console.log('Error: Search tag is empty.');
+        this.productData = [];
+        this.searchTag = 'Uknown name';
+      } else {
+        console.log('Search tag is:', this.searchTag);
+
+        this.service.GetProductApi().subscribe({
+          next: (data: any) => {
+            this.productData = data;
+          },
+          error: (error) => {
+            console.log('Error fetching products:', error);
+          },
+        });
+      }
     });
   }
 

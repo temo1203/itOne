@@ -43,7 +43,6 @@ export class FullProductsComponent {
   ];
 
   ngOnInit(): void {
-    swal.fire('გილოცავთ', 'პროდუქტი წარმატებით დაემატა cart-ში!', 'success');
     //! Fetch product data
     this.service.GetProductApi().subscribe({
       next: (data) => {
