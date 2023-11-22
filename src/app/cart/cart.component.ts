@@ -65,7 +65,7 @@ export class CartComponent implements OnInit {
     }
   }
 
-  plus(id: any) {
+  plus(id: any, ref:any) {
     // Retrieve the current value
     this.http
       .get(
@@ -88,9 +88,10 @@ export class CartComponent implements OnInit {
             },
           });
       });
+      ref.value++ 
   }
 
-  minuse(id: any) {
+  minuse(id: any,ref:any) {
     this.http
       .get(
         `https://itstep-30100-default-rtdb.firebaseio.com/cart/${id}/cartNum.json`
@@ -112,5 +113,6 @@ export class CartComponent implements OnInit {
             },
           });
       });
+      ref.value--
   }
 }

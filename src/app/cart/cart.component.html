@@ -20,15 +20,16 @@
           </div>
           <div class="product-options">
             <div class="number">
-              <button (click)="plus(value.key)" class="plus-button">+</button>
+              <button (click)="plus(value.key,ref)" class="plus-button">+</button>
 
               <input
                 [value]="value.value.cartNum"
                 type="text"
                 class="number-input"
+                #ref
               />
 
-              <button (click)="minuse(value.key)" class="minus-button">
+              <button (click)="minuse(value.key,ref)" class="minus-button">
                 -
               </button>
             </div>

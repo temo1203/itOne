@@ -162,7 +162,7 @@ a {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-@media screen and (max-width: 1180px) {
+@media screen and (max-width: 1210px) {
   .products {
     grid-template-columns: repeat(2, 1fr);
   }
