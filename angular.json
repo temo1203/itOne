@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/it-step",
+            "outputPath": "dist/itStep",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": ["zone.js"],
