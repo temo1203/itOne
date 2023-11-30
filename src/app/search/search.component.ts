@@ -25,8 +25,8 @@ export class SearchComponent implements OnInit {
         this.service.GetProductApi().subscribe({
           next: (data: any) => {
             this.productData = data.filter((product: any) =>
-            this.filterProductBySearchTag(product)
-          );
+              this.filterProductBySearchTag(product)
+            );
           },
           error: (error) => {
             console.log('Error fetching products:', error);
@@ -49,15 +49,12 @@ export class SearchComponent implements OnInit {
     });
   }
   filterProductBySearchTag(product: any): boolean {
-    
     if (product && product.title) {
       console.log(product.title);
-      
-      return product.title.toLowerCase().includes(this.searchTag.toLowerCase());
 
-      
+      return product.title.toLowerCase().includes(this.searchTag.toLowerCase());
     }
-    
+
     return false;
   }
 }

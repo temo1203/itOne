@@ -5,6 +5,7 @@ import { Observable, map } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiServiceService {
+  isClassActive: boolean = false;
   //> Define API endpoints
   api: string = 'https://itstep-30100-default-rtdb.firebaseio.com/data.json';
   cartApi: string =

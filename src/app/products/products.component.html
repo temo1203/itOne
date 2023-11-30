@@ -3,7 +3,7 @@
     <img [src]="productsData.image" alt="" />
     <div class="content">
       <div>
-        <h1 [innerHTML]="productsData.title | chunk"></h1>
+        <h1 class="titleThing" [innerHTML]="productsData.title | chunk"></h1>
         <p>{{ productsData.price | currency : "₾" }}</p>
       </div>
       <!-- <p>Show more</p> -->

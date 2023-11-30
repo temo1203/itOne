@@ -1,6 +1,5 @@
 .container {
   padding: 0px 30px;
-  height: 1000px;
 }
 .product {
   place-items: center;
@@ -23,6 +22,7 @@
 .product p {
   color: #d2691e;
   cursor: pointer;
+  text-align: center;
 }
 .product ul {
   display: flex;
@@ -159,11 +159,44 @@ form button,
   color: #ffa723;
 }
 /* ! */
+@media screen and (max-width: 1210px) {
+  .tab {
+    padding: 0 50px;
+  }
+  .mat-class {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 @media screen and (max-width: 850px) {
   .product {
     flex-direction: column;
   }
   .product ul {
     justify-content: center;
+  }
+  .tab {
+    padding: 0;
+  }
+  .width_lite {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .mat-class {
+    grid-template-columns: 1fr;
+  }
+}
+@media screen and (max-width: 400px) {
+  .tab p {
+    line-height: 30px;
+  }
+  .container {
+    padding: 0;
+  }
+  .titleThing {
+    text-align: center;
+  }
+  .product p {
+    text-align: center;
   }
 }

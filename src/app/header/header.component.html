@@ -25,18 +25,19 @@
         ><mat-icon>reorder</mat-icon>
       </a>
     </div>
-    <div
-      *ngIf="isClassActive"
-      [ngClass]="{ scale: isClassActive }"
-      class="toggleDiv"
-    >
+    <div *ngIf="isClass" class="toggleDiv">
       <div class="toggle_menu">
         <a routerLink="/">Home</a>
         <a routerLink="/full">Products</a>
         <a routerLink="/cart">Contact</a>
       </div>
       <div class="toggle_search">
-        <input type="search" placeholder="Search..." />
+        <input
+          #value
+          (keyup.enter)="searchBar(value.value)"
+          type="search"
+          placeholder="Search..."
+        />
         <ion-icon name="search-outline"></ion-icon>
       </div>
       <a routerLink="/cart" class="toggle_cart"
