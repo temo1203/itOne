@@ -13,6 +13,7 @@ import { PipesPipe } from './pipes.pipe';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatBadgeModule } from '@angular/material/badge';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
@@ -29,6 +30,8 @@ import { FullProductsComponent } from './full-products/full-products.component';
 import { CartComponent } from './cart/cart.component';
 import { ChunkPipe } from './chunk.pipe';
 import { SearchComponent } from './search/search.component';
+import { MatSelectModule } from '@angular/material/select';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -43,8 +46,11 @@ import { SearchComponent } from './search/search.component';
     FullProductsComponent,
     CartComponent,
     SearchComponent,
+    AdminPageComponent,
   ],
   imports: [
+    MatSelectModule,
+    MatBadgeModule,
     MatSliderModule,
     MatCheckboxModule,
     MatTabsModule,

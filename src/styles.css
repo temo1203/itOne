@@ -28,6 +28,7 @@ body {
   overflow: auto !important;
   position: static !important;
   height: 100% !important;
+  background-color: beige;
 }
 body.swal2-height-auto {
   height: 100% !important;

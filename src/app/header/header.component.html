@@ -4,6 +4,7 @@
       <h1 routerLink="/" class="logo">
         <a>Shop</a>
       </h1>
+
       <div class="menu">
         <a routerLink="/">Home</a>
         <a routerLink="/full">Products</a>
@@ -18,7 +19,12 @@
         />
         <ion-icon name="search-outline"></ion-icon>
       </div>
-      <a routerLink="/cart" class="cart"
+      <a
+        matBadgeSize="medium"
+        [matBadge]="cartData"
+        matBadgeColor="accent"
+        routerLink="/cart"
+        class="cart"
         ><ion-icon name="cart-outline"></ion-icon>
       </a>
       <a class="toggleIcon" (click)="toggleClass()"

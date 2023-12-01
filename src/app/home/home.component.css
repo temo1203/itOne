@@ -262,10 +262,12 @@ a {
     width: 380px;
   }
 }
-@media screen and (max-width: 385px) {
+@media screen and (max-width: 420px) {
   .main-container-lite {
     padding: 0;
   }
+}
+@media screen and (max-width: 385px) {
   .product-card {
     width: 100%;
   }

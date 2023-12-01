@@ -89,7 +89,7 @@ input[type="search"]:focus {
 
 ion-icon,
 mat-icon {
-  font-size: 24px;
+  font-size: 30px;
   color: #fff;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
@@ -152,5 +152,10 @@ mat-icon {
   .toggle_cart ion-icon {
     margin-top: 15px;
     font-size: 28px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .toggleDiv {
+    width: 100%;
   }
 }

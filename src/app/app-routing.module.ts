@@ -6,6 +6,7 @@ import { FilterProductsComponent } from './filter-products/filter-products.compo
 import { FullProductsComponent } from './full-products/full-products.component';
 import { CartComponent } from './cart/cart.component';
 import { SearchComponent } from './search/search.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'full', component: FullProductsComponent },
   { path: 'cart', component: CartComponent },
   { path: 'search', component: SearchComponent },
+  { path: 'admin', component: AdminPageComponent },
 ];
 
 @NgModule({

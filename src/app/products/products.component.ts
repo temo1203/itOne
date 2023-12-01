@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiServiceService } from '../api-service.service';
 import { HttpClient } from '@angular/common/http';
 import { noSpace } from '../nospace.validators';
-import swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -149,7 +149,11 @@ export class ProductsComponent implements OnInit {
         },
       });
     } else {
-      swal.fire('შეცდომა', 'პროდუქტი უკვე არის დამატებული!', 'error');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'You already have added this product!',
+      });
     }
   }
 
