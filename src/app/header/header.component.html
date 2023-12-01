@@ -46,7 +46,12 @@
         />
         <ion-icon name="search-outline"></ion-icon>
       </div>
-      <a routerLink="/cart" class="toggle_cart"
+      <a
+        matBadgeSize="medium"
+        [matBadge]="cartData"
+        matBadgeColor="accent"
+        routerLink="/cart"
+        class="toggle_cart"
         ><ion-icon name="cart-outline"></ion-icon>
       </a>
     </div>
