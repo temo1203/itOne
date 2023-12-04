@@ -22,7 +22,6 @@
 .product p {
   color: #d2691e;
   cursor: pointer;
-  text-align: center;
 }
 .product ul {
   display: flex;
@@ -39,11 +38,14 @@
   font-weight: 600;
   color: #ffff;
 }
+
 .product ul li > button:first-child {
   background-color: blueviolet;
+  cursor: pointer;
 }
 .product ul li > button:last-child {
   background-color: #d2691e;
+  cursor: pointer;
 }
 .rating mat-icon {
   color: #d2691e;

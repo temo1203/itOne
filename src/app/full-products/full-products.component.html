@@ -43,63 +43,34 @@
           </div>
         </div>
         <!--!  -->
-
-        <!-- <div
-          class="product-card"
-          (click)="productClick(value.id)"
-          *ngFor="let value of productData"
-        >
-          <a class="product-image">
-            <img [src]="value.image" alt="product image" />
-          </a>
-          <div class="product-details">
-            <a>
-              <h5 class="product-title">{{ value.title | lineBreak }}</h5>
-            </a>
-            <div class="price-and-rating">
-              <p class="product-price">
-                {{ value.price | currency : "₾" }}
-              </p>
-              <div class="rating">
-                <div class="rate">
-                  <span
-                    class="fa fa-star"
-                    *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
-                    [class.checked]="value.rating.rate >= i + 1"
-                  ></span>
-                </div>
-
-                <span class="rating-value">{{ value.rating.rate }}</span>
-              </div>
-            </div>
-          </div>
-        </div> -->
       </div>
       <div class="search-bar">
-        <ul>
-          <mat-checkbox
-            color="warn"
-            *ngFor="let value of searchBar; let i = index"
-            class="example-margin"
-            (change)="applyFilters(value)"
-          >
-            {{ value }}
-          </mat-checkbox>
-        </ul>
+        <div class="stick">
+          <ul>
+            <mat-checkbox
+              color="warn"
+              *ngFor="let value of searchBar; let i = index"
+              class="example-margin"
+              (change)="applyFilters(value)"
+            >
+              {{ value }}
+            </mat-checkbox>
+          </ul>
 
-        <div class="aside-search">
-          <p *ngFor="let value of asideSearchBar">
-            {{ value }}
-          </p>
-        </div>
-        <div class="filter">
-          <mat-slider class="mat-slider" discrete min="0" max="599">
-            <input [(ngModel)]="minPrice" value="0" matSliderStartThumb />
-            <input [(ngModel)]="maxPrice" value="500" matSliderEndThumb />
-          </mat-slider>
-          <button (click)="filterProducts()" mat-flat-button color="primary">
-            Filter
-          </button>
+          <div class="aside-search">
+            <p *ngFor="let value of asideSearchBar">
+              {{ value }}
+            </p>
+          </div>
+          <div class="filter">
+            <mat-slider class="mat-slider" discrete min="0" max="599">
+              <input [(ngModel)]="minPrice" value="0" matSliderStartThumb />
+              <input [(ngModel)]="maxPrice" value="500" matSliderEndThumb />
+            </mat-slider>
+            <button (click)="filterProducts()" mat-flat-button color="primary">
+              Filter
+            </button>
+          </div>
         </div>
       </div>
     </div>

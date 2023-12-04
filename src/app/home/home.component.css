@@ -42,6 +42,7 @@ h1 {
   line-height: 60px;
 }
 .slider-content button {
+  cursor: pointer;
   width: 190px;
   color: #ffff;
   height: 50px;

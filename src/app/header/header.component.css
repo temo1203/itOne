@@ -52,6 +52,10 @@ h1 {
   transform-origin: right;
   transition: transform 0.3s ease-in-out;
 }
+.mat-badge-content {
+  background: #000000 !important;
+  color: #fff !important;
+}
 
 .menu a:hover,
 .toggle_menu a:hover {

@@ -32,6 +32,7 @@ import { ChunkPipe } from './chunk.pipe';
 import { SearchComponent } from './search/search.component';
 import { MatSelectModule } from '@angular/material/select';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { AdComponent } from './ad/ad.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     CartComponent,
     SearchComponent,
     AdminPageComponent,
+    AdComponent,
   ],
   imports: [
     MatSelectModule,
