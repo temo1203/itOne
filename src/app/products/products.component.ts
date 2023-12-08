@@ -152,7 +152,7 @@ export class ProductsComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'You already have added this product!',
+        text: 'ეს პროდუქტი უკვე დამატებულია!',
       });
     }
   }
