@@ -27,7 +27,6 @@ export class ProductsComponent implements OnInit {
   productsData: any = [];
   nameRegex = /.*[A-Z].*/;
   cartBoolean: string = '';
-
   ngOnInit(): void {
     //! Fetch product data
     this.http
@@ -159,7 +158,33 @@ export class ProductsComponent implements OnInit {
 
   //! Open review pop-up
   openPop() {
-    this.popBool = true;
+    // this.popBool = true;
+    (async () => {
+      const { value: formValues } = await Swal.fire({
+        title: 'Multiple inputs',
+        html: this.createModalContent(),
+        focusConfirm: false,
+        showCancelButton: true,
+        cancelButtonText: 'Cancel',
+        confirmButtonText: 'Yes',
+        preConfirm: () => {
+          // Retrieve the values of the input fields
+          return {
+            val1: (document.getElementById('swal-input1') as HTMLInputElement)
+              .value,
+            val2: (document.getElementById('swal-input2') as HTMLInputElement)
+              .value,
+          };
+        },
+      });
+
+      if (formValues) {
+        Swal.fire(JSON.stringify(formValues));
+        console.log(JSON.stringify(formValues));
+      } else {
+        // Handle cancel or close actions if needed
+      }
+    })();
   }
 
   //! Close review pop-up
@@ -170,5 +195,28 @@ export class ProductsComponent implements OnInit {
   //! Get form controls
   get fc() {
     return this.form.controls;
+  }
+  createModalContent(): string {
+    return `
+      <div>
+        <!-- Input fields -->
+        <input [(ngModel)]="formValues.val1" name="swal-input1" class="swal2-input">
+        <input [(ngModel)]="formValues.val2" name="swal-input2" class="swal2-input">
+
+        <!-- Star rating -->
+        <div class="rating">
+          <input [(ngModel)]="selectedRating" name="rate" id="star5" type="radio" value="5" (change)="onRatingChange(5)" />
+          <label title="text" for="star5"></label>
+          <input [(ngModel)]="selectedRating" name="rate" id="star4" type="radio" value="4" (change)="onRatingChange(4)" />
+          <label title="text" for="star4"></label>
+          <input [(ngModel)]="selectedRating" name="rate" id="star3" type="radio" value="3" (change)="onRatingChange(3)" />
+          <label title="text" for="star3"></label>
+          <input [(ngModel)]="selectedRating" name="rate" id="star2" type="radio" value="2" (change)="onRatingChange(2)" />
+          <label title="text" for="star2"></label>
+          <input [(ngModel)]="selectedRating" name="rate" id="star1" type="radio" value="1" (change)="onRatingChange(1)" />
+          <label title="text" for="star1"></label>
+        </div>
+      </div>
+    `;
   }
 }

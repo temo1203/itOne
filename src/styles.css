@@ -29,6 +29,7 @@ body {
   position: static !important;
   height: 100% !important;
   background-color: beige;
+  padding: 0 !important;
 }
 body.swal2-height-auto {
   height: 100% !important;

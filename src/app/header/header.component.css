@@ -15,7 +15,13 @@
 h1 {
   margin: 0;
 }
-
+.logo {
+  width: 171px;
+  height: 52px;
+  position: relative;
+  top: 13px;
+  cursor: pointer;
+}
 .header-content {
   display: flex;
   align-items: center;
@@ -47,7 +53,7 @@ h1 {
   left: 0;
   width: 100%;
   height: 3px;
-  background: #fff;
+  /* background: #fff; */
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease-in-out;
@@ -59,7 +65,7 @@ h1 {
 
 .menu a:hover,
 .toggle_menu a:hover {
-  color: #fbb72c;
+  color: #805300;
 }
 .toggle_menu a {
   margin: 0;
@@ -88,7 +94,7 @@ input[type="search"] {
 
 input[type="search"]:focus {
   outline: none;
-  border-color: #fbb72c;
+  border-color: #2c2c2d;
 }
 
 ion-icon,
@@ -101,7 +107,7 @@ mat-icon {
 
 ion-icon:hover,
 mat-icon:hover {
-  color: #fbb72c;
+  color: #2c2c2d;
 }
 mat-icon {
   font-size: 35px;
