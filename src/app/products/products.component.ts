@@ -120,6 +120,11 @@ export class ProductsComponent implements OnInit {
   //! Add to cart
   cartAdd() {
     if (this.cartBoolean == 'კალათაში დამატება') {
+      Swal.fire({
+        icon: 'success',
+        title: 'გილოცავთ',
+        text: 'პროდუქტი დამატებული იქნა',
+      });
       //! Update cartBool in Firebase
       this.http
         .put(

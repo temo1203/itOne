@@ -52,7 +52,9 @@ export class SearchComponent implements OnInit {
     if (product && product.title) {
       console.log(product.title);
 
-      return product.title.toLowerCase().includes(this.searchTag.toLowerCase());
+      return product.title
+        .toLowerCase()
+        .startsWith(this.searchTag.toLowerCase());
     }
 
     return false;

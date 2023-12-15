@@ -14,6 +14,7 @@ export class CartComponent implements OnInit {
   constructor(private service: ApiServiceService, public http: HttpClient) {}
 
   ngOnInit(): void {
+    //! it retrieves products from api
     this.service.getCartApi().subscribe({
       next: (data: any) => {
         this.cartData = data || [];
@@ -65,54 +66,64 @@ export class CartComponent implements OnInit {
     }
   }
 
-  plus(id: any, ref:any) {
+  //! plus function
+  plus(id: any, ref: any) {
     // Retrieve the current value
-    this.http
-      .get(
-        `https://itstep-30100-default-rtdb.firebaseio.com/cart/${id}/cartNum.json`
-      )
-      .subscribe((currentValue: any) => {
-        const newValue = currentValue + 1;
+    if (ref.value! > 10) {
+      console.log('its more then 10');
+    } else {
+      this.http
+        .get(
+          `https://itstep-30100-default-rtdb.firebaseio.com/cart/${id}/cartNum.json`
+        )
+        .subscribe((currentValue: any) => {
+          const newValue = currentValue + 1;
 
-        this.http
-          .put(
-            `https://itstep-30100-default-rtdb.firebaseio.com/cart/${id}/cartNum.json`,
-            newValue
-          )
-          .subscribe({
-            next: (data) => {
-              console.log('number:', data, 'was added');
-            },
-            error: (error) => {
-              console.log(error);
-            },
-          });
-      });
-      ref.value++ 
+          this.http
+            .put(
+              `https://itstep-30100-default-rtdb.firebaseio.com/cart/${id}/cartNum.json`,
+              newValue
+            )
+            .subscribe({
+              next: (data) => {
+                console.log('number:', data, 'was added');
+              },
+              error: (error) => {
+                console.log(error);
+              },
+            });
+        });
+      ref.value++;
+    }
   }
 
-  minuse(id: any,ref:any) {
-    this.http
-      .get(
-        `https://itstep-30100-default-rtdb.firebaseio.com/cart/${id}/cartNum.json`
-      )
-      .subscribe((currentValue: any) => {
-        const newValue = currentValue - 1;
+  //! minus function
+  minus(id: any, ref: any) {
+    if (ref.value < 0) {
+      console.log('its less then 0');
+    } else {
+      this.http
+        .get(
+          `https://itstep-30100-default-rtdb.firebaseio.com/cart/${id}/cartNum.json`
+        )
+        .subscribe((currentValue: any) => {
+          const newValue = currentValue - 1;
 
-        this.http
-          .put(
-            `https://itstep-30100-default-rtdb.firebaseio.com/cart/${id}/cartNum.json`,
-            newValue
-          )
-          .subscribe({
-            next: (data) => {
-              console.log('number:', data, 'was minused');
-            },
-            error: (error) => {
-              console.log(error);
-            },
-          });
-      });
-      ref.value--
+          this.http
+            .put(
+              `https://itstep-30100-default-rtdb.firebaseio.com/cart/${id}/cartNum.json`,
+              newValue
+            )
+            .subscribe({
+              next: (data) => {
+                console.log('number:', data, 'was minused');
+              },
+              error: (error) => {
+                console.log(error);
+              },
+            });
+        });
+      ref.value--;
+    }
   }
 }
