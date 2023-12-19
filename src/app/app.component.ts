@@ -15,8 +15,6 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         console.log('Navigated to: ', event.url);
-        this.service.isClassActive = false;
-        console.log(this.service.isClassActive);
       }
     });
   }

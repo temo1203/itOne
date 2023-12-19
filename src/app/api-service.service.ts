@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class ApiServiceService {
+  cartNum: number = 0;
   isClassActive: boolean = false;
   //> Define API endpoints
   api: string = 'https://itstep-30100-default-rtdb.firebaseio.com/data.json';

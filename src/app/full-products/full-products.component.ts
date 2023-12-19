@@ -41,7 +41,7 @@ export class FullProductsComponent {
     'car audio',
     'Outdoor and interior',
   ];
-
+  productBool: boolean = false;
   ngOnInit(): void {
     //! Fetch product data
     this.service.GetProductApi().subscribe({
@@ -62,6 +62,7 @@ export class FullProductsComponent {
 
           //? Remove the selected product to avoid duplication
           productArray.splice(randomIndex, 1);
+          this.productBool = true;
         }
       },
       error: (error) => {

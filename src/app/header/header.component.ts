@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ElementRef } from '@angular/core';
+import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { ApiServiceService } from '../api-service.service';
 import { HttpClient } from '@angular/common/http';
+import { ViewportScroller } from '@angular/common';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -10,13 +11,15 @@ import { HttpClient } from '@angular/common/http';
 export class HeaderComponent implements OnInit {
   cartApi: string =
     'https://itstep-30100-default-rtdb.firebaseio.com/cart.json';
-  isClass: any;
+  isClass: boolean = false;
   cartData: any;
   random = [1, 2, 3, 4, 5];
   constructor(
     private router: Router,
     private service: ApiServiceService,
-    private http: HttpClient
+    private http: HttpClient,
+    private viewportScroller: ViewportScroller,
+    private route: ActivatedRoute
   ) {}
   ngOnInit(): void {
     this.http.get(this.cartApi).subscribe({
@@ -30,15 +33,24 @@ export class HeaderComponent implements OnInit {
     });
   }
   toggleClass() {
-    this.service.isClassActive = !this.service.isClassActive;
-    this.isClass = this.service.isClassActive;
-    console.log(this.service.isClassActive);
+    this.isClass = !this.isClass;
+    console.log(this.isClass);
   }
   searchBar(value: any) {
+    this.isClass = false;
     this.router.navigate(['/search'], {
       queryParams: {
         searchValue: value,
       },
+    });
+  }
+  contactNav() {
+    this.router.navigate(['/cart']).then(() => {
+      const currentScrollPosition = this.viewportScroller.getScrollPosition();
+      const targetScrollPosition =
+        currentScrollPosition[1] + window.innerHeight / 2;
+
+      this.viewportScroller.scrollToPosition([0, targetScrollPosition]);
     });
   }
 }

@@ -44,6 +44,7 @@ h1 {
   margin: 0 15px;
   font-size: 18px;
   position: relative;
+  cursor: pointer;
   transition: color 0.3s ease-in-out;
 }
 
@@ -95,7 +96,7 @@ input[type="search"] {
 
 input[type="search"]:focus {
   outline: none;
-  border-color: #2c2c2d;
+  border-color: #e1a24e;
 }
 
 ion-icon,
@@ -146,8 +147,9 @@ mat-icon {
     position: absolute;
     background: red;
     padding: 30px;
-    top: 91px;
-    background: linear-gradient(135deg, #fbb72c, #ff9a00);
+    top: 102px;
+    /* background: linear-gradient(135deg, #fbb72c, #ff9a00); */
+    background: linear-gradient(135deg, #d0b06e, #c47908);
     scale: 1;
     border-top: 1px solid black;
   }
@@ -155,6 +157,7 @@ mat-icon {
   .search,
   .cart {
     display: none;
+    cursor: pointer;
   }
   .header-content {
     justify-content: space-between;
@@ -168,5 +171,8 @@ mat-icon {
 @media screen and (max-width: 500px) {
   .toggleDiv {
     width: 100%;
+  }
+  .main-container-lite {
+    padding: 0;
   }
 }

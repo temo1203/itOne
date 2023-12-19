@@ -7,12 +7,21 @@
           apparel, and more
         </h1>
         <button routerLink="/full">
-          სრულად ნახვა <ion-icon name="chevron-forward-outline"></ion-icon>
+          Click for more <ion-icon name="chevron-forward-outline"></ion-icon>
         </button>
       </div>
     </div>
     <div class="product-search">
       <div class="products">
+        <div class="ghost-main" *ngIf="!productBool">
+          <div *ngFor="let i of [1, 2, 3, 4, 5, 6]" class="ghost-card">
+            <div class="ghost">
+              <div class="ghost-header"></div>
+              <div class="ghost-body"></div>
+            </div>
+            <div class="shimmering"></div>
+          </div>
+        </div>
         <div
           (click)="productClick(value.id)"
           *ngFor="let value of productData"

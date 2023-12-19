@@ -14,7 +14,7 @@
       <div class="menu">
         <a routerLink="/">Home</a>
         <a routerLink="/full">Products</a>
-        <a routerLink="/cart">Contact</a>
+        <a (click)="contactNav()">Contact</a>
       </div>
       <div class="search">
         <input
@@ -23,7 +23,10 @@
           type="search"
           placeholder="Search..."
         />
-        <ion-icon name="search-outline"></ion-icon>
+        <ion-icon
+          (click)="searchBar(value.value)"
+          name="search-outline"
+        ></ion-icon>
       </div>
       <a
         matBadgeSize="medium"
@@ -50,7 +53,10 @@
           type="search"
           placeholder="Search..."
         />
-        <ion-icon name="search-outline"></ion-icon>
+        <ion-icon
+          (click)="searchBar(value.value)"
+          name="search-outline"
+        ></ion-icon>
       </div>
       <a
         matBadgeSize="medium"

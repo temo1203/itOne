@@ -302,12 +302,23 @@ h1 {
   .products_card {
     grid-template-columns: 1fr;
   }
-}
-@media screen and (max-width: 400px) {
-  .main-container-lite {
-    padding: 0;
+  .product-card {
+    width: 400px;
   }
+}
+@media screen and (max-width: 500px) {
+  .main-container-lite {
+    padding: 0 !important;
+  }
+}
+@media screen and (max-width: 450px) {
   .product-card {
     width: 100%;
   }
+}
+.ghost-main {
+  grid-template-columns: repeat(2, 1fr);
+}
+.ghost-card {
+  width: 380px;
 }

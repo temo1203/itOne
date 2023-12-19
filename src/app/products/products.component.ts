@@ -5,10 +5,12 @@ import { ApiServiceService } from '../api-service.service';
 import { HttpClient } from '@angular/common/http';
 import { noSpace } from '../nospace.validators';
 import Swal from 'sweetalert2';
+import { HeaderComponent } from '../header/header.component';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
+  providers: [HeaderComponent],
 })
 export class ProductsComponent implements OnInit {
   //> Rating stars
@@ -55,7 +57,8 @@ export class ProductsComponent implements OnInit {
     private service: ApiServiceService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private headerCo: HeaderComponent
   ) {
     //! Fetch route parameters
     this.route.queryParams.subscribe((params: any) => {
@@ -121,9 +124,11 @@ export class ProductsComponent implements OnInit {
   cartAdd() {
     if (this.cartBoolean == 'კალათაში დამატება') {
       Swal.fire({
+        position: 'top-end',
         icon: 'success',
-        title: 'გილოცავთ',
-        text: 'პროდუქტი დამატებული იქნა',
+        title: 'product has been added in cart',
+        showConfirmButton: false,
+        timer: 1000,
       });
       //! Update cartBool in Firebase
       this.http
@@ -134,9 +139,7 @@ export class ProductsComponent implements OnInit {
           true
         )
         .subscribe({
-          next: (data) => {
-            console.log(data);
-          },
+          next: (data) => {},
           error: (error) => {
             console.log(error);
           },
@@ -146,6 +149,12 @@ export class ProductsComponent implements OnInit {
       this.cartBoolean = 'დამატებულია';
       this.http.post(this.service.cartApi, this.productsData).subscribe({
         next: (data) => {
+          this.service.getCartApi().subscribe({
+            next: (data) => {
+              let va = Object.keys(data).length;
+              console.log(va);
+            },
+          });
           console.log(data);
         },
         error: (error) => {
@@ -153,10 +162,17 @@ export class ProductsComponent implements OnInit {
         },
       });
     } else {
+      // Swal.fire({
+      //   icon: 'error',
+      //   title: 'Oops...',
+      //   text: 'ეს პროდუქტი უკვე დამატებულია!',
+      // });
       Swal.fire({
+        position: 'top-end',
         icon: 'error',
-        title: 'Oops...',
-        text: 'ეს პროდუქტი უკვე დამატებულია!',
+        title: 'product is already added',
+        showConfirmButton: false,
+        timer: 1000,
       });
     }
   }
