@@ -137,13 +137,13 @@ export class CartComponent implements OnInit {
             .subscribe({
               next: (data) => {
                 console.log('number:', data, 'was added');
+                ref.value++;
               },
               error: (error) => {
                 console.log(error);
               },
             });
         });
-      ref.value++;
     }
   }
 
@@ -166,6 +166,7 @@ export class CartComponent implements OnInit {
             )
             .subscribe({
               next: (data) => {
+                ref.value--;
                 console.log('number:', data, 'was minused');
               },
               error: (error) => {
@@ -173,7 +174,6 @@ export class CartComponent implements OnInit {
               },
             });
         });
-      ref.value--;
     }
   }
 }

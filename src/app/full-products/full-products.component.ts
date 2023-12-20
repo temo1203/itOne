@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiServiceService } from '../api-service.service';
 import { Router } from '@angular/router';
-import swal from 'sweetalert2';
+
 @Component({
   selector: 'app-full-products',
   templateUrl: './full-products.component.html',
@@ -9,7 +9,8 @@ import swal from 'sweetalert2';
 })
 export class FullProductsComponent {
   constructor(private service: ApiServiceService, private router: Router) {}
-
+  //> product num
+  productNum: number = 20;
   //> Search bar items
   searchBar = ["men's clothing", 'jewelery', 'electronics', "women's clothing"];
 
@@ -50,7 +51,7 @@ export class FullProductsComponent {
         const productArray = Object.values(data);
 
         this.productData = [];
-        const numProducts = 18;
+        let numProducts = this.productNum;
 
         for (let i = 0; i < numProducts; i++) {
           //? Select a random product
@@ -114,4 +115,28 @@ export class FullProductsComponent {
     //? Check if there are no matching products
     this.noMatchingProducts = this.productData.length === 0;
   }
+  // changeNum() {
+  //   console.log('num was changed:', this.productNum);
+  //   this.service.GetProductApi().subscribe({
+  //     next: (data) => {
+  //       const productArray = Object.values(data);
+
+  //       this.productData = [];
+  //       let numProducts = this.productNum;
+
+  //       for (let i = 0; i < numProducts; i++) {
+  //         //? Select a random product
+  //         const randomIndex = Math.floor(Math.random() * productArray.length);
+  //         const randomProduct = productArray[randomIndex];
+
+  //         this.productData.push(randomProduct);
+  //         this.productFilterData.push(randomProduct);
+
+  //         //? Remove the selected product to avoid duplication
+  //         productArray.splice(randomIndex, 1);
+  //         this.productBool = true;
+  //       }
+  //     },
+  //   });
+  // }
 }
