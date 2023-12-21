@@ -33,7 +33,7 @@ export class FilterProductsComponent implements OnInit {
       } else {
         this.service.GetProductApi().subscribe({
           next: (data) => {
-            this.productData = Object.values(data).slice(0, 18);
+            this.productData = Object.values(data).slice(0, 20);
           },
           error: (error) => {
             console.log(error);

@@ -30,7 +30,6 @@ export class CartComponent implements OnInit {
   deleteProduct(key: any, id: any) {
     const deleteUrl = `https://itstep-30100-default-rtdb.firebaseio.com/cart/${key}.json`;
 
-    // const confirmation = confirm('Are you sure you want to delete this item?');
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -81,39 +80,6 @@ export class CartComponent implements OnInit {
         });
       }
     });
-    // if (confirmation) {
-    //   this.http.delete(deleteUrl).subscribe({
-    //     next: () => {
-    //       console.log('Item deleted successfully');
-    //       this.service.getCartApi().subscribe({
-    //         next: (data: any) => {
-    //           this.cartData = data || [];
-    //         },
-    //         error: (error) => {
-    //           console.log(error);
-    //         },
-    //       });
-    //       const updatedIndex = id - 1;
-
-    //       this.http
-    //         .put(
-    //           `https://itstep-30100-default-rtdb.firebaseio.com/data/${updatedIndex}/cartBool.json`,
-    //           false
-    //         )
-    //         .subscribe({
-    //           next: (data) => {
-    //             console.log('cartBool updated successfully', data);
-    //           },
-    //           error: (error) => {
-    //             console.log('Error updating cartBool:', error);
-    //           },
-    //         });
-    //     },
-    //     error: (error) => {
-    //       console.log('Error deleting item:', error);
-    //     },
-    //   });
-    // }
   }
 
   //! plus function
@@ -149,7 +115,7 @@ export class CartComponent implements OnInit {
 
   //! minus function
   minus(id: any, ref: any) {
-    if (ref.value < -1) {
+    if (ref.value < 1) {
       console.log('its less then 0');
     } else {
       this.http

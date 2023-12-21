@@ -9,7 +9,7 @@
       <!-- <p>Show more</p> -->
       <ul>
         <li>
-          <button (click)="openPop()">შეფასება</button>
+          <button (click)="openPop()">Give Feedback</button>
           <button (click)="cartAdd()">{{ cartBoolean }}</button>
         </li>
       </ul>
@@ -17,7 +17,7 @@
   </div>
   <div *ngIf="popBool" class="pop">
     <div class="del">
-      <h1>შეფასება</h1>
+      <h1>Give Feedback</h1>
       <ion-icon (click)="closePop()" name="close-outline"></ion-icon>
     </div>
     <mat-divider></mat-divider>
@@ -94,17 +94,17 @@
         >
       </mat-form-field>
       <button
-        [disabled]="form.invalid"
+        [disabled]="selectedRating == 0 || form.invalid"
         (click)="SubmitForm()"
         type="submit"
         mat-flat-button
         color="primary"
       >
-        შეფასება
+        Submit
       </button>
     </form>
     <mat-divider></mat-divider>
-    <button (click)="closePop()" mat-flat-button color="warn">დახურვა</button>
+    <button (click)="closePop()" mat-flat-button color="warn">Close</button>
   </div>
 
   <mat-tab-group class="tab" dynamicHeight>

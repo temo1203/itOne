@@ -139,6 +139,9 @@ mat-icon {
   scale: 0;
 }
 @media screen and (max-width: 850px) {
+  .mat-badge-medium.mat-badge-above .mat-badge-content {
+    top: -25px;
+  }
   .toggleIcon {
     display: inline;
   }

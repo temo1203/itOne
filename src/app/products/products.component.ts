@@ -41,9 +41,10 @@ export class ProductsComponent implements OnInit {
         next: (data) => {
           this.productsData = data;
           if (this.productsData?.cartBool === false) {
-            this.cartBoolean = 'კალათაში დამატება';
+            this.cartBoolean = 'Add to cart';
+            // this.cartBoolean = 'კალათაში დამატება';
           } else {
-            this.cartBoolean = 'დამატებულია';
+            this.cartBoolean = 'Already added';
           }
           this.commentsData = this.productsData?.comments || [];
         },
@@ -57,8 +58,7 @@ export class ProductsComponent implements OnInit {
     private service: ApiServiceService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private http: HttpClient,
-    private headerCo: HeaderComponent
+    private http: HttpClient
   ) {
     //! Fetch route parameters
     this.route.queryParams.subscribe((params: any) => {
@@ -82,7 +82,7 @@ export class ProductsComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(10),
-          Validators.maxLength(25),
+          Validators.maxLength(150),
         ],
       ],
     });
@@ -122,7 +122,7 @@ export class ProductsComponent implements OnInit {
 
   //! Add to cart
   cartAdd() {
-    if (this.cartBoolean == 'კალათაში დამატება') {
+    if (this.cartBoolean == 'Add to cart') {
       Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -146,7 +146,7 @@ export class ProductsComponent implements OnInit {
         });
 
       //! Add product to the cart
-      this.cartBoolean = 'დამატებულია';
+      this.cartBoolean = 'Already added';
       this.http.post(this.service.cartApi, this.productsData).subscribe({
         next: (data) => {
           this.service.getCartApi().subscribe({
@@ -179,33 +179,33 @@ export class ProductsComponent implements OnInit {
 
   //! Open review pop-up
   openPop() {
-    // this.popBool = true;
-    (async () => {
-      const { value: formValues } = await Swal.fire({
-        title: 'Multiple inputs',
-        html: this.createModalContent(),
-        focusConfirm: false,
-        showCancelButton: true,
-        cancelButtonText: 'Cancel',
-        confirmButtonText: 'Yes',
-        preConfirm: () => {
-          // Retrieve the values of the input fields
-          return {
-            val1: (document.getElementById('swal-input1') as HTMLInputElement)
-              .value,
-            val2: (document.getElementById('swal-input2') as HTMLInputElement)
-              .value,
-          };
-        },
-      });
+    this.popBool = true;
+    // (async () => {
+    //   const { value: formValues } = await Swal.fire({
+    //     title: 'Multiple inputs',
+    //     html: this.createModalContent(),
+    //     focusConfirm: false,
+    //     showCancelButton: true,
+    //     cancelButtonText: 'Cancel',
+    //     confirmButtonText: 'Yes',
+    //     preConfirm: () => {
 
-      if (formValues) {
-        Swal.fire(JSON.stringify(formValues));
-        console.log(JSON.stringify(formValues));
-      } else {
-        // Handle cancel or close actions if needed
-      }
-    })();
+    //       return {
+    //         val1: (document.getElementById('swal-input1') as HTMLInputElement)
+    //           .value,
+    //         val2: (document.getElementById('swal-input2') as HTMLInputElement)
+    //           .value,
+    //       };
+    //     },
+    //   });
+
+    //   if (formValues) {
+    //     Swal.fire(JSON.stringify(formValues));
+    //     console.log(JSON.stringify(formValues));
+    //   } else {
+
+    //   }
+    // })();
   }
 
   //! Close review pop-up

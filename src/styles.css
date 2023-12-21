@@ -30,6 +30,7 @@ body {
   height: 100% !important;
   background-color: beige;
   padding: 0 !important;
+  scroll-behavior: smooth;
 }
 body.swal2-height-auto {
   height: 100% !important;

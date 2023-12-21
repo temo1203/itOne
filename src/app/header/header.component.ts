@@ -1,5 +1,5 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
-import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ApiServiceService } from '../api-service.service';
 import { HttpClient } from '@angular/common/http';
 import { ViewportScroller } from '@angular/common';
@@ -45,12 +45,15 @@ export class HeaderComponent implements OnInit {
     });
   }
   contactNav() {
-    this.router.navigate(['/cart']).then(() => {
-      const currentScrollPosition = this.viewportScroller.getScrollPosition();
-      const targetScrollPosition =
-        currentScrollPosition[1] + window.innerHeight / 2;
+    const fragment = 'contact';
+    this.router.navigate(['/cart', { fragment }]).then(() => {
+      setTimeout(() => {
+        const currentScrollPosition = this.viewportScroller.getScrollPosition();
+        const targetScrollPosition =
+          currentScrollPosition[1] + window.innerHeight / 2;
 
-      this.viewportScroller.scrollToPosition([0, targetScrollPosition]);
+        this.viewportScroller.scrollToPosition([0, targetScrollPosition]);
+      }, 0);
     });
   }
 }

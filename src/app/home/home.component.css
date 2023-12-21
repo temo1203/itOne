@@ -282,6 +282,11 @@ a {
     width: 380px;
   }
 }
+@media screen and (max-width: 500px) {
+  .main-container-lite {
+    padding: 0;
+  }
+}
 @media screen and (max-width: 420px) {
   .main-container-lite {
     padding: 0;

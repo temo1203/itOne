@@ -115,28 +115,4 @@ export class FullProductsComponent {
     //? Check if there are no matching products
     this.noMatchingProducts = this.productData.length === 0;
   }
-  // changeNum() {
-  //   console.log('num was changed:', this.productNum);
-  //   this.service.GetProductApi().subscribe({
-  //     next: (data) => {
-  //       const productArray = Object.values(data);
-
-  //       this.productData = [];
-  //       let numProducts = this.productNum;
-
-  //       for (let i = 0; i < numProducts; i++) {
-  //         //? Select a random product
-  //         const randomIndex = Math.floor(Math.random() * productArray.length);
-  //         const randomProduct = productArray[randomIndex];
-
-  //         this.productData.push(randomProduct);
-  //         this.productFilterData.push(randomProduct);
-
-  //         //? Remove the selected product to avoid duplication
-  //         productArray.splice(randomIndex, 1);
-  //         this.productBool = true;
-  //       }
-  //     },
-  //   });
-  // }
 }
