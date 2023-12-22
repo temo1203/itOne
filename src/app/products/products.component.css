@@ -191,7 +191,11 @@ form button,
   .mat-class {
     grid-template-columns: 1fr;
   }
+  .pop {
+    left: 3%;
+  }
 }
+
 @media screen and (max-width: 400px) {
   .tab p {
     line-height: 30px;

@@ -33,6 +33,7 @@ import { SearchComponent } from './search/search.component';
 import { MatSelectModule } from '@angular/material/select';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdComponent } from './ad/ad.component';
+import { ApiServiceService } from './api-service.service';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,7 @@ import { AdComponent } from './ad/ad.component';
     FormsModule,
     MatSidenavModule,
   ],
-  providers: [],
+  providers: [ApiServiceService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'products', component: ProductsComponent },
   { path: 'filters', component: FilterProductsComponent },
   { path: 'full', component: FullProductsComponent },
-  { path: 'cart', component: CartComponent },
+  { path: 'cart', component: CartComponent, pathMatch: 'full' },
   { path: 'search', component: SearchComponent },
   { path: 'admin', component: AdminPageComponent },
 ];

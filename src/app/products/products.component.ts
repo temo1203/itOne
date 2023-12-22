@@ -139,7 +139,9 @@ export class ProductsComponent implements OnInit {
           true
         )
         .subscribe({
-          next: (data) => {},
+          next: (data) => {
+            this.service.updateData(1);
+          },
           error: (error) => {
             console.log(error);
           },

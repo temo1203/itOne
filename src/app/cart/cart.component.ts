@@ -1,18 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  ViewChild,
+  AfterViewInit,
+} from '@angular/core';
 import { ApiServiceService } from '../api-service.service';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { Router, NavigationEnd } from '@angular/router';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
+  @ViewChild('contact') contact: ElementRef | undefined;
   cartData: any[] = [];
   cartNum: number = 0;
   name: any;
   message: any;
-  constructor(private service: ApiServiceService, public http: HttpClient) {}
+  constructor(
+    private service: ApiServiceService,
+    public http: HttpClient,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     //! it retrieves products from api
@@ -67,6 +79,7 @@ export class CartComponent implements OnInit {
               )
               .subscribe({
                 next: (data) => {
+                  this.service.updateData(-1);
                   console.log('cartBool updated successfully', data);
                 },
                 error: (error) => {
@@ -81,7 +94,6 @@ export class CartComponent implements OnInit {
       }
     });
   }
-
   //! plus function
   plus(id: any, ref: any) {
     // Retrieve the current value

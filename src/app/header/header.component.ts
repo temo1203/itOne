@@ -25,6 +25,9 @@ export class HeaderComponent implements OnInit {
     this.http.get(this.cartApi).subscribe({
       next: (data) => {
         this.cartData = Object.keys(data).length;
+        this.service.data$.subscribe((data) => {
+          this.cartData += data;
+        });
         console.log(this.cartData);
       },
       error: (error) => {
@@ -51,7 +54,6 @@ export class HeaderComponent implements OnInit {
         const currentScrollPosition = this.viewportScroller.getScrollPosition();
         const targetScrollPosition =
           currentScrollPosition[1] + window.innerHeight / 2;
-
         this.viewportScroller.scrollToPosition([0, targetScrollPosition]);
       }, 0);
     });

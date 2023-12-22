@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -21,5 +22,11 @@ export class ApiServiceService {
   //! Fetch cart data
   getCartApi() {
     return this.http.get(this.cartApi);
+  }
+  private dataSubject = new BehaviorSubject<number>(0);
+  public data$ = this.dataSubject.asObservable();
+
+  updateData(newData: number) {
+    this.dataSubject.next(newData);
   }
 }
